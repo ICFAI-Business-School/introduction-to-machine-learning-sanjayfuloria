@@ -13,21 +13,16 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: Predicting the target variable using Machine Learning
-      id: predicting-the-target-variable-using-machine-learning
-      uses: classroom-resources/autograding-io-grader@v1
+    - name: Introduction to Machine Learning
+      id: introduction-to-machine-learning
+      uses: classroom-resources/autograding-python-grader@v1
       with:
-        test-name: Predicting the target variable using Machine Learning
-        setup-command: ''
-        command: "./calculator.sh"
-        input: ''
-        expected-output: ''
-        comparison-method: contains
         timeout: 10
         max-score: 50
+        setup-command: pip install pytest
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        PREDICTING-THE-TARGET-VARIABLE-USING-MACHINE-LEARNING_RESULTS: "${{steps.predicting-the-target-variable-using-machine-learning.outputs.result}}"
+        INTRODUCTION-TO-MACHINE-LEARNING_RESULTS: "${{steps.introduction-to-machine-learning.outputs.result}}"
       with:
-        runners: predicting-the-target-variable-using-machine-learning
+        runners: introduction-to-machine-learning
